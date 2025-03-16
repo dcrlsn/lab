@@ -1,0 +1,19 @@
+ingress:
+  enabled: true
+serviceWeb:
+  loadBalancerIP: 10.2.2.2
+  type: ClusterIP
+# TODO: Figure out a good secret situation.
+adminPassword: "password"
+serviceDns:
+  loadBalancerIP: 10.2.2.2
+  type: LoadBalancer
+doh:
+  enabled: true
+  pullPolicy: Always
+  envVars: {
+    DOH_UPSTREAM: "https://1.1.1.1/dns-query"
+  }
+persistentVolumeClaim:
+  enabled: true
+  storageClass: "longhorn"
